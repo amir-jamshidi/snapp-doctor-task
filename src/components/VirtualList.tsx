@@ -9,7 +9,7 @@ export interface VirtualListProps<T> {
   moreScan?: number;
   className?: string;
 }
-function VirtualList<T>({
+function VirtualList<T extends { id: number }>({
   height,
   itemHeight,
   items,
@@ -59,7 +59,7 @@ function VirtualList<T>({
         >
           {visibleItemsList.map((item, idx) => (
             <div
-              key={listRange.startIndex + idx}
+              key={item.id}
               style={{
                 height: `${itemHeight}px`,
                 overflow: "hidden",
